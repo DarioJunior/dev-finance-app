@@ -1,0 +1,361 @@
+/* Global ===========================*/
+.dark-mode:root {
+  --body-bg: rgb(77, 77, 77);
+  --card-bg: rgb(34, 34, 34);
+  --card-text: rgb(254, 254, 254);
+  --data-header-bg: rgb(34, 34, 34);
+  --data-text-color: rgb(254, 254, 254);
+  --data-row-bg: rgb(34, 34, 34);
+  --modal-bg: #adadad;
+}
+
+:root {
+  /*Seletor raiz*/
+  --header-bg: #2d4a22;
+  --body-bg: rgb(243, 243, 243);
+  --card-bg: rgb(254, 254, 254);
+  --data-header-bg: rgb(254, 254, 254);
+  --data-text-color: #969cb3;
+  --data-row-bg: rgb(254, 254, 254);
+  --card-text: #363f5f;
+  --modal-bg: #f0f2f5;
+  --green: #49aa26;
+  --light-green: #3dd705;
+  --red: #e92929;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*
+  medida da caixa contando do conteúdo ou border
+  BORDER-BOX: a partir da borda.
+  */
+}
+
+html {
+  font-size: 93.75%; /* 15px*/
+}
+
+body {
+  background: var(--body-bg);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Change to Darkmode  ===========================*/
+.switch {
+  margin: 2rem 0 0 1.5rem;
+  position: absolute;
+  display: inline-block;
+  width: 57px;
+  height: 30px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 22px;
+  width: 23px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+input:checked + .slider {
+  background-color: rgb(63, 63, 63);
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* mantendo o elemento visivel para leitores de tela CSS-TRICKS*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.container {
+  width: min(/*mínimo*/ 90vw, /*máximo*/ 800px); /* FUNÇÃO */
+  margin: auto;
+}
+
+/* Titles ===========================*/
+h2 {
+  margin-top: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: var(--dark-blue);
+
+  font-weight: normal;
+}
+
+/* Links & Buttons ===========================*/
+a {
+  font-weight: 700;
+  color: var(--green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--light-green);
+}
+
+button {
+  width: 100%;
+  height: 50px;
+
+  border: none;
+  border-radius: 0.25rem;
+
+  color: white;
+  background: var(--green);
+
+  padding: 0;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--light-green);
+}
+
+.button.new {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
+.button.cancel {
+  color: var(--red);
+  border: 2px var(--red) solid;
+  border-radius: 0.25rem;
+
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.6;
+}
+
+.button.cancel:hover {
+  opacity: 1;
+}
+/* Header ===========================*/
+
+header {
+  background: var(--header-bg);
+  padding: 2rem 0 10rem;
+  text-align: center;
+}
+
+#logo {
+  color: #fff;
+  font-weight: 100;
+}
+/* Balance ===========================*/
+#balance {
+  margin-top: -8rem;
+}
+
+#balance h2 {
+  color: #fff;
+  margin-top: 0;
+}
+/* Cards ===========================*/
+
+.card {
+  background: var(--card-bg);
+  padding: 1.5rem 2rem;
+  border-radius: 0.25rem;
+
+  margin-bottom: 2rem;
+  color: var(--card-text);
+}
+
+.card h3 {
+  font-weight: normal;
+  font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card p {
+  font-size: 2rem;
+  line-height: 3rem;
+
+  margin-top: 1rem;
+}
+
+.card.total {
+  /* 1 elemento com 2 classes*/
+  background: var(--green);
+  color: white;
+}
+/* Table ===========================*/
+#transaction {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+#data-table {
+  width: 100%;
+  border-spacing: 0 0.5rem; /* tamanho das bordas da table */
+  color: var(--data-text-color);
+}
+
+table thead tr th:first-child, /*Primeiro filho*/
+table tbody tr td:first-child {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+table thead tr th:last-child, /*Primeiro filho*/
+table tbody tr td:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+table thead th {
+  background: var(--data-header-bg);
+  font-weight: normal;
+  padding: 1rem 2rem;
+  text-align: left;
+}
+table tbody tr {
+  opacity: 0.7;
+}
+
+table tbody tr:hover {
+  opacity: 10;
+}
+
+table tbody td {
+  background: var(--data-row-bg);
+  padding: 1rem 2rem;
+}
+
+td.description {
+  color: var(--dark-blue);
+}
+
+td.income {
+  color: var(--light-green);
+}
+
+td.expense {
+  color: var(--red);
+}
+
+/* Modal ===========================*/
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--modal-bg);
+  padding: 2.4rem;
+}
+
+/* Form ===========================*/
+#form {
+  max-width: 500px;
+}
+
+#form h2 {
+  margin-top: 0;
+}
+
+input {
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.8rem;
+
+  width: 100%;
+}
+
+.input-group {
+  margin-top: 0.8rem;
+}
+
+.input-group .help {
+  opacity: 0.4;
+}
+
+.input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+  width: 48%;
+}
+
+/* Footer ===========================*/
+footer {
+  text-align: center;
+  padding: 4rem 0 2rem;
+  color: var(--card-text);
+  opacity: 0.5;
+}
+
+/* Responsive ===========================*/
+@media (min-width: 800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /*1fr 1fr 1fr*/
+    gap: 2rem;
+  }
+}
